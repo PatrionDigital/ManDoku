@@ -33,6 +33,8 @@
     "notFound": "見つかりませんでした",
     "alreadyOwned": "登録済みです",
     "add": "コレクションに追加",
+    "addedSuccess": "「{{title}}」をコレクションに追加しました！",
+    "scanAgain": "もう一冊スキャン",
     "invalidIsbn": "有効なISBN（10桁または13桁）を入力してください",
     "photoCapture": "またはバーコードを撮影",
     "takePhoto": "写真を撮る",

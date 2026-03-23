@@ -33,6 +33,8 @@
     "notFound": "Not found",
     "alreadyOwned": "Already in collection",
     "add": "Add to Collection",
+    "addedSuccess": "Added \"{{title}}\" to collection!",
+    "scanAgain": "Scan Another",
     "invalidIsbn": "Please enter a valid ISBN (10 or 13 digits)",
     "photoCapture": "Or take a photo of the barcode",
     "takePhoto": "Take Photo",
