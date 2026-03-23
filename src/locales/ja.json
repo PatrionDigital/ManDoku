@@ -1,0 +1,48 @@
+{
+  "app": {
+    "title": "マンガ棚",
+    "scan": "スキャン",
+    "collection": "コレクション",
+    "settings": "設定"
+  },
+  "auth": {
+    "login": "ログイン",
+    "signup": "新規登録",
+    "logout": "ログアウト",
+    "email": "メールアドレス",
+    "password": "パスワード",
+    "displayName": "表示名",
+    "loginWith": "{{provider}}でログイン",
+    "noAccount": "アカウントをお持ちでない方",
+    "hasAccount": "すでにアカウントをお持ちの方"
+  },
+  "onboarding": {
+    "title": "家族を設定",
+    "createHousehold": "新しい家族を作成",
+    "joinHousehold": "招待コードで参加",
+    "householdName": "家族の名前",
+    "inviteCode": "招待コード",
+    "yourCode": "招待コード: {{code}}",
+    "shareCode": "家族にこのコードを共有してください"
+  },
+  "scanner": {
+    "title": "バーコードをスキャン",
+    "manual": "ISBNを手動入力",
+    "scanning": "スキャン中...",
+    "found": "見つかりました！",
+    "notFound": "見つかりませんでした",
+    "alreadyOwned": "登録済みです",
+    "add": "コレクションに追加",
+    "invalidIsbn": "ISBNは13桁の数字で入力してください"
+  },
+  "collection": {
+    "empty": "最初のマンガをスキャンしよう！",
+    "volumesOwned": "{{count}}巻所持",
+    "latest": "最新: {{vol}}巻",
+    "grid": "格子",
+    "carousel": "カルーセル",
+    "remove": "削除",
+    "removeConfirm": "「{{title}}」を削除しますか？",
+    "addedBy": "{{name}}が追加"
+  }
+}

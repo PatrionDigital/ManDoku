@@ -1,0 +1,48 @@
+{
+  "app": {
+    "title": "Manga Shelf",
+    "scan": "Scan",
+    "collection": "Collection",
+    "settings": "Settings"
+  },
+  "auth": {
+    "login": "Log In",
+    "signup": "Sign Up",
+    "logout": "Log Out",
+    "email": "Email",
+    "password": "Password",
+    "displayName": "Display Name",
+    "loginWith": "Log in with {{provider}}",
+    "noAccount": "Don't have an account?",
+    "hasAccount": "Already have an account?"
+  },
+  "onboarding": {
+    "title": "Set Up Your Household",
+    "createHousehold": "Create New Household",
+    "joinHousehold": "Join with Invite Code",
+    "householdName": "Household Name",
+    "inviteCode": "Invite Code",
+    "yourCode": "Invite Code: {{code}}",
+    "shareCode": "Share this code with family members"
+  },
+  "scanner": {
+    "title": "Scan Barcode",
+    "manual": "Enter ISBN manually",
+    "scanning": "Scanning...",
+    "found": "Found!",
+    "notFound": "Not found",
+    "alreadyOwned": "Already in collection",
+    "add": "Add to Collection",
+    "invalidIsbn": "ISBN must be 13 digits"
+  },
+  "collection": {
+    "empty": "Scan your first manga!",
+    "volumesOwned": "{{count}} volumes owned",
+    "latest": "Latest: Vol. {{vol}}",
+    "grid": "Grid",
+    "carousel": "Carousel",
+    "remove": "Remove",
+    "removeConfirm": "Remove \"{{title}}\"?",
+    "addedBy": "Added by {{name}}"
+  }
+}
