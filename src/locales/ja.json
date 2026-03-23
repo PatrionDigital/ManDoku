@@ -33,7 +33,10 @@
     "notFound": "見つかりませんでした",
     "alreadyOwned": "登録済みです",
     "add": "コレクションに追加",
-    "invalidIsbn": "ISBNは13桁の数字で入力してください"
+    "invalidIsbn": "有効なISBN（10桁または13桁）を入力してください",
+    "photoCapture": "またはバーコードを撮影",
+    "takePhoto": "写真を撮る",
+    "processing": "処理中..."
   },
   "collection": {
     "empty": "最初のマンガをスキャンしよう！",
