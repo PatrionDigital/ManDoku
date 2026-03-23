@@ -10,13 +10,13 @@ interface CollectionState {
 }
 
 const savedViewMode = typeof window !== 'undefined'
-  ? (localStorage.getItem('manga-shelf-view') as ViewMode | null) ?? 'grid'
+  ? (localStorage.getItem('mandoku-view') as ViewMode | null) ?? 'grid'
   : 'grid';
 
 export const useCollectionStore = create<CollectionState>((set) => ({
   viewMode: savedViewMode,
   setViewMode: (mode) => {
-    localStorage.setItem('manga-shelf-view', mode);
+    localStorage.setItem('mandoku-view', mode);
     set({ viewMode: mode });
   },
   expandedSeries: null,
