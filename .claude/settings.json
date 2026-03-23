@@ -1,0 +1,17 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "jq -r '.tool_input.command' | { read -r cmd; echo \"$cmd\" | grep -q '^git commit' || exit 0; cd /home/user/Manga-Shelf && npm run lint 2>&1 || { echo '{\"decision\":\"block\",\"reason\":\"Lint failed. Fix lint errors before committing.\"}'; exit 0; }; }",
+            "timeout": 30,
+            "statusMessage": "Running lint check before commit..."
+          }
+        ]
+      }
+    ]
+  }
+}
