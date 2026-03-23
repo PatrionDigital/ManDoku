@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Html5Qrcode } from 'html5-qrcode';
+import { Html5Qrcode, Html5QrcodeSupportedFormats } from 'html5-qrcode';
 import { normalizeIsbn } from '../../lib/isbn';
 
 interface PhotoCaptureProps {
@@ -25,7 +25,12 @@ export function PhotoCapture({ onScan }: PhotoCaptureProps) {
     setIsProcessing(true);
 
     try {
-      const result = await Html5Qrcode.scanFile(file, false);
+      const scanner = new Html5Qrcode('photo-capture-scanner', {
+        formatsToSupport: [Html5QrcodeSupportedFormats.EAN_13],
+        verbose: false,
+      });
+      const result = await scanner.scanFile(file, false);
+      scanner.clear();
       const isbn = normalizeIsbn(result);
       if (isbn) {
         if (navigator.vibrate) navigator.vibrate(100);
@@ -64,6 +69,7 @@ export function PhotoCapture({ onScan }: PhotoCaptureProps) {
         />
       </label>
       {error && <p className="text-sm text-red-400">{error}</p>}
+      <div id="photo-capture-scanner" className="hidden" />
     </div>
   );
 }
