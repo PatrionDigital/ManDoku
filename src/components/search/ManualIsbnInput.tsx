@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { normalizeIsbn } from '../../lib/isbn';
 
 interface ManualIsbnInputProps {
   onSubmit: (isbn: string) => void;
@@ -12,13 +13,13 @@ export function ManualIsbnInput({ onSubmit }: ManualIsbnInputProps) {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const cleaned = isbn.replace(/[-\s]/g, '');
-    if (!/^\d{13}$/.test(cleaned)) {
+    const normalized = normalizeIsbn(isbn);
+    if (!normalized) {
       setError(t('scanner.invalidIsbn'));
       return;
     }
     setError(null);
-    onSubmit(cleaned);
+    onSubmit(normalized);
     setIsbn('');
   };
 

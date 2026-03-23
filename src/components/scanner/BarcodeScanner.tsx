@@ -6,6 +6,7 @@ import { useCollection } from '../../hooks/useCollection';
 import { useAuth } from '../../hooks/useAuth';
 import { DUPLICATE_ERROR } from '../../lib/storage';
 import { ManualIsbnInput } from '../search/ManualIsbnInput';
+import { PhotoCapture } from './PhotoCapture';
 import { LoadingSpinner } from '../ui/LoadingSpinner';
 
 export function BarcodeScanner() {
@@ -123,6 +124,10 @@ export function BarcodeScanner() {
       {lookupError && (
         <p className="text-center text-sm text-red-400">{t('scanner.notFound')}</p>
       )}
+
+      <div className="border-t border-[var(--color-border)] pt-4">
+        <PhotoCapture onScan={handleScan} />
+      </div>
 
       <div className="border-t border-[var(--color-border)] pt-4">
         <ManualIsbnInput onSubmit={handleScan} />
