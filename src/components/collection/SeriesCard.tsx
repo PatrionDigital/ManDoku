@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import NumberFlow from '@number-flow/react';
 import type { MangaSeries } from '../../lib/types';
@@ -9,6 +10,7 @@ interface SeriesCardProps {
 
 export function SeriesCard({ series, onClick }: SeriesCardProps) {
   const { t } = useTranslation();
+  const [imgFailed, setImgFailed] = useState(false);
 
   return (
     <button
@@ -17,20 +19,20 @@ export function SeriesCard({ series, onClick }: SeriesCardProps) {
     >
       <div className="overflow-hidden rounded-lg bg-[var(--color-bg-card)] shadow-sm">
         <div className="relative aspect-[2/3] w-full overflow-hidden bg-[var(--color-bg-secondary)]">
-          <img
-            src={series.latestVolume.thumbnailUrl}
-            alt={`${series.seriesName} ${series.latestVolume.volumeNumber}`}
-            className="h-full w-full object-cover"
-            onError={(e) => {
-              const target = e.target as HTMLImageElement;
-              target.style.display = 'none';
-              target.parentElement!.classList.add('flex', 'items-center', 'justify-center', 'p-4');
-              const placeholder = document.createElement('span');
-              placeholder.className = 'text-center text-sm font-medium text-[var(--color-text-secondary)]';
-              placeholder.textContent = `${series.seriesName} ${series.latestVolume.volumeNumber}`;
-              target.parentElement!.appendChild(placeholder);
-            }}
-          />
+          {imgFailed ? (
+            <div className="flex h-full items-center justify-center p-4">
+              <span className="text-center text-sm font-medium text-[var(--color-text-secondary)]">
+                {series.seriesName} {series.latestVolume.volumeNumber}
+              </span>
+            </div>
+          ) : (
+            <img
+              src={series.latestVolume.thumbnailUrl}
+              alt={`${series.seriesName} ${series.latestVolume.volumeNumber}`}
+              className="h-full w-full object-cover"
+              onError={() => setImgFailed(true)}
+            />
+          )}
           <div className="absolute bottom-2 right-2 rounded-full bg-black/60 px-2 py-0.5 text-xs font-medium text-white">
             <NumberFlow value={series.totalOwned} />
           </div>

@@ -32,7 +32,8 @@
     "found": "見つかりました！",
     "notFound": "見つかりませんでした",
     "alreadyOwned": "登録済みです",
-    "add": "コレクションに追加"
+    "add": "コレクションに追加",
+    "invalidIsbn": "ISBNは13桁の数字で入力してください"
   },
   "collection": {
     "empty": "最初のマンガをスキャンしよう！",

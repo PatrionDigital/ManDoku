@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { useAuth } from '../hooks/useAuth';
 import { useCollection } from '../hooks/useCollection';
 import { groupVolumesIntoSeries } from '../lib/series';
@@ -12,10 +13,9 @@ export function CollectionPage() {
   const { profile } = useAuth();
   const { volumes, isLoading } = useCollection(profile?.householdId ?? null);
   const { viewMode } = useCollectionStore();
+  const series = useMemo(() => groupVolumesIntoSeries(volumes), [volumes]);
 
   if (isLoading) return <LoadingSpinner />;
-
-  const series = groupVolumesIntoSeries(volumes);
 
   if (series.length === 0) return <EmptyState />;
 

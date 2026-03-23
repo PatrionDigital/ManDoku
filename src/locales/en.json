@@ -32,7 +32,8 @@
     "found": "Found!",
     "notFound": "Not found",
     "alreadyOwned": "Already in collection",
-    "add": "Add to Collection"
+    "add": "Add to Collection",
+    "invalidIsbn": "ISBN must be 13 digits"
   },
   "collection": {
     "empty": "Scan your first manga!",

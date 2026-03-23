@@ -14,7 +14,7 @@ export function ManualIsbnInput({ onSubmit }: ManualIsbnInputProps) {
     e.preventDefault();
     const cleaned = isbn.replace(/[-\s]/g, '');
     if (!/^\d{13}$/.test(cleaned)) {
-      setError('ISBN must be 13 digits');
+      setError(t('scanner.invalidIsbn'));
       return;
     }
     setError(null);

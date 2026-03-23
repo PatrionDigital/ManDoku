@@ -4,6 +4,7 @@ import { useBarcodeScan } from '../../hooks/useBarcodeScan';
 import { useNdlLookup } from '../../hooks/useNdlLookup';
 import { useCollection } from '../../hooks/useCollection';
 import { useAuth } from '../../hooks/useAuth';
+import { DUPLICATE_ERROR } from '../../lib/storage';
 import { ManualIsbnInput } from '../search/ManualIsbnInput';
 import { LoadingSpinner } from '../ui/LoadingSpinner';
 
@@ -13,10 +14,12 @@ export function BarcodeScanner() {
   const { addVolume, isAdding } = useCollection(profile?.householdId ?? null);
   const [scannedIsbn, setScannedIsbn] = useState<string | null>(null);
   const [addedMessage, setAddedMessage] = useState<string | null>(null);
+  const [previewImgFailed, setPreviewImgFailed] = useState(false);
 
   const handleScan = useCallback((isbn: string) => {
     setScannedIsbn(isbn);
     setAddedMessage(null);
+    setPreviewImgFailed(false);
   }, []);
 
   const { isScanning, error: scanError, startScanning, stopScanning } = useBarcodeScan({
@@ -46,7 +49,7 @@ export function BarcodeScanner() {
       setAddedMessage(t('scanner.found'));
       setScannedIsbn(null);
     } catch (err) {
-      if (err instanceof Error && err.message === 'DUPLICATE') {
+      if (err instanceof Error && err.message === DUPLICATE_ERROR) {
         setAddedMessage(t('scanner.alreadyOwned'));
       }
     }
@@ -93,14 +96,14 @@ export function BarcodeScanner() {
       {ndlData && !isLooking && (
         <div className="mx-auto max-w-md rounded-lg bg-[var(--color-bg-card)] p-4">
           <div className="flex gap-4">
-            <img
-              src={ndlData.thumbnailUrl}
-              alt={ndlData.title}
-              className="h-32 w-auto rounded object-cover"
-              onError={(e) => {
-                (e.target as HTMLImageElement).style.display = 'none';
-              }}
-            />
+            {!previewImgFailed && (
+              <img
+                src={ndlData.thumbnailUrl}
+                alt={ndlData.title}
+                className="h-32 w-auto rounded object-cover"
+                onError={() => setPreviewImgFailed(true)}
+              />
+            )}
             <div className="flex-1">
               <h3 className="font-medium text-[var(--color-text-primary)]">{ndlData.title}</h3>
               <p className="mt-1 text-sm text-[var(--color-text-secondary)]">{ndlData.author}</p>

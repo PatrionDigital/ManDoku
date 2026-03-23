@@ -1,6 +1,10 @@
 import { supabase } from './supabase';
 import type { MangaVolume, StorageAdapter } from './types';
 
+/** PostgreSQL unique constraint violation */
+const PG_UNIQUE_VIOLATION = '23505';
+export const DUPLICATE_ERROR = 'DUPLICATE';
+
 interface VolumeRow {
   id: string;
   isbn: string;
@@ -76,8 +80,8 @@ export class SupabaseAdapter implements StorageAdapter {
       .single();
 
     if (error) {
-      if (error.code === '23505') {
-        throw new Error('DUPLICATE');
+      if (error.code === PG_UNIQUE_VIOLATION) {
+        throw new Error(DUPLICATE_ERROR);
       }
       throw error;
     }
