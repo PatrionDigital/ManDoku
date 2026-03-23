@@ -45,7 +45,7 @@ export function extractSeriesName(title: string): string {
     .trim();
 
   // Remove trailing punctuation artifacts
-  name = name.replace(/[\s　]+$/, '').replace(/[,、，]\s*$/, '');
+  name = name.replace(/[\s\u3000]+$/, '').replace(/[,\u3001\uFF0C]\s*$/, '');
 
   return name || title;
 }
